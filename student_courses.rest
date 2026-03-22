@@ -1,0 +1,195 @@
+### =====================================
+### 🌍 ENVIRONMENT VARIABLES
+### =====================================
+
+@local = http://localhost:3000
+@render = https://your-app-name.onrender.com
+
+
+### =====================================
+### 🔹 STUDENTS (LOCALHOST)
+### =====================================
+
+### Create Student
+POST {{local}}/students
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "Student",
+  "email": "test@student.com",
+  "age": 22,
+  "course": "Computer Science",
+  "gpa": 3.5,
+  "enrollmentDate": "2024-01-01"
+}
+
+###
+
+### Get All Students
+GET {{local}}/students
+
+###
+
+### Get Single Student
+GET {{local}}/students/PUT_STUDENT_ID_HERE
+
+###
+
+### Update Student
+PUT {{local}}/students/PUT_STUDENT_ID_HERE
+Content-Type: application/json
+
+{
+  "firstName": "Updated",
+  "lastName": "Student",
+  "email": "updated@student.com",
+  "age": 25,
+  "course": "Software Engineering",
+  "gpa": 3.9,
+  "enrollmentDate": "2024-01-01"
+}
+
+###
+
+### Delete Student
+DELETE {{local}}/students/PUT_STUDENT_ID_HERE
+
+###
+
+
+
+### =====================================
+### 🔹 COURSES (LOCALHOST)
+### =====================================
+
+### Create Course
+POST {{local}}/courses
+Content-Type: application/json
+
+{
+  "courseName": "Web Development",
+  "courseCode": "CSE341",
+  "instructor": "Dr Smith",
+  "credits": 3
+}
+
+###
+
+### Get All Courses
+GET {{local}}/courses
+
+###
+
+### Get Single Course
+GET {{local}}/courses/PUT_COURSE_ID_HERE
+
+###
+
+### Update Course
+PUT {{local}}/courses/PUT_COURSE_ID_HERE
+Content-Type: application/json
+
+{
+  "courseName": "Advanced Web Dev",
+  "courseCode": "CSE341",
+  "instructor": "Dr John",
+  "credits": 4
+}
+
+###
+
+### Delete Course
+DELETE {{local}}/courses/PUT_COURSE_ID_HERE
+
+###
+
+
+
+### =====================================
+### 🔹 STUDENTS (RENDER)
+### =====================================
+
+### Create Student (Render)
+POST {{render}}/students
+Content-Type: application/json
+
+{
+  "firstName": "Render",
+  "lastName": "Student",
+  "email": "render@student.com",
+  "age": 23,
+  "course": "Information Systems",
+  "gpa": 3.6,
+  "enrollmentDate": "2024-01-01"
+}
+
+###
+
+### Get All Students (Render)
+GET {{render}}/students
+
+###
+
+### Update Student (Render)
+PUT {{render}}/students/PUT_STUDENT_ID_HERE
+Content-Type: application/json
+
+{
+  "firstName": "RenderUpdated",
+  "lastName": "Student",
+  "email": "updated@render.com",
+  "age": 26,
+  "course": "Cybersecurity",
+  "gpa": 3.8,
+  "enrollmentDate": "2024-01-01"
+}
+
+###
+
+### Delete Student (Render)
+DELETE {{render}}/students/PUT_STUDENT_ID_HERE
+
+###
+
+
+
+### =====================================
+### 🔹 COURSES (RENDER)
+### =====================================
+
+### Create Course (Render)
+POST {{render}}/courses
+Content-Type: application/json
+
+{
+  "courseName": "API Development",
+  "courseCode": "CSE342",
+  "instructor": "Dr Render",
+  "credits": 4
+}
+
+###
+
+### Get All Courses (Render)
+GET {{render}}/courses
+
+###
+
+### Update Course (Render)
+PUT {{render}}/courses/PUT_COURSE_ID_HERE
+Content-Type: application/json
+
+{
+  "courseName": "Advanced API Dev",
+  "courseCode": "CSE342",
+  "instructor": "Dr Updated",
+  "credits": 5
+}
+
+###
+
+### Delete Course (Render)
+DELETE {{render}}/courses/PUT_COURSE_ID_HERE
+
+###
