@@ -1,31 +1,22 @@
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 
-const port = process.env.PORT || 3000;
-
-// ✅ Detect environment
-const serverUrl = process.env.RENDER_EXTERNAL_URL
-  ? process.env.RENDER_EXTERNAL_URL
-  : `http://localhost:${port}`;
-
-const swaggerOptions = {
+const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Student Courses API",
-      version: "1.0.0"
+      title: "Student API",
+      version: "1.0.0",
+      description: "Student and Courses API Documentation"
     },
     servers: [
       {
-        url: serverUrl
+        url: "https://student-courses-api.onrender.com"
       }
     ]
   },
   apis: ["./routes/*.js"]
 };
 
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
+const swaggerSpec = swaggerJsDoc(options);
 
-module.exports = (app) => {
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-};
+module.exports = swaggerSpec;
