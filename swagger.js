@@ -1,22 +1,31 @@
-const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
-const options = {
+const port = process.env.PORT || 3000;
+
+// ✅ Detect environment
+const serverUrl = process.env.RENDER_EXTERNAL_URL
+  ? process.env.RENDER_EXTERNAL_URL
+  : `http://localhost:${port}`;
+
+const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Student API",
-      version: "1.0.0",
-      description: "Student and Courses API Documentation"
+      title: "Student Courses API",
+      version: "1.0.0"
     },
     servers: [
       {
-        url: "http://localhost:3000"
+        url: serverUrl
       }
     ]
   },
   apis: ["./routes/*.js"]
 };
 
-const swaggerSpec = swaggerJsDoc(options);
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-module.exports = swaggerSpec;
+module.exports = (app) => {
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+};

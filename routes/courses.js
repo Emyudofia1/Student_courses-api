@@ -35,17 +35,28 @@ router.get("/:id", coursesController.getSingle);
 
 /**
  * @swagger
- * /courses/{id}:
- *   get:
- *     summary: Get course by ID
+ * /courses:
+ *   post:
+ *     summary: Create a course
  *     tags: [Courses]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               courseName:
+ *                 type: string
+ *               courseCode:
+ *                 type: string
+ *               instructor:
+ *                 type: string
+ *               credits:
+ *                 type: number
  *     responses:
- *       200:
- *         description: Success
+ *       201:
+ *         description: Course created
  */
 router.post("/", coursesController.createCourse);
 
