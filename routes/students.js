@@ -1,8 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const studentsController = require("../controllers/students");
+const verifyToken = require("../middleware/auth");
 
 // ROUTES ONLY (no logic here)
+
+/**
+ * @openapi
+ * /test:
+ *   get:
+ *     summary: Test route
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get("/test", (req, res) => {
+  res.send("Test working");
+});
+
 
 /**
  * @swagger
@@ -64,7 +79,8 @@ router.get("/:id", studentsController.getSingle);
  *       201:
  *         description: Student created
  */
-router.post("/", studentsController.createStudent);
+// router.post("/", studentsController.createStudent);
+router.post("/", verifyToken, studentsController.createStudent);
 
 
 /**
@@ -102,7 +118,8 @@ router.post("/", studentsController.createStudent);
  *       204:
  *         description: Student updated
  */
-router.put("/:id", studentsController.updateStudent);
+// router.put("/:id", studentsController.updateStudent);
+router.put("/:id", verifyToken, studentsController.updateStudent);
 
 
 /**
@@ -119,6 +136,7 @@ router.put("/:id", studentsController.updateStudent);
  *       200:
  *         description: Student deleted
  */
-router.delete("/:id", studentsController.deleteStudent);
+// router.delete("/:id", studentsController.deleteStudent);
+router.delete("/:id", verifyToken, studentsController.deleteStudent);
 
 module.exports = router;
